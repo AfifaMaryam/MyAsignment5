@@ -20,6 +20,7 @@ public class MainActivity2 extends AppCompatActivity {
             String key;
             Name = bundle.getString("NAME");
         }
+
         tv = findViewById(R.id.showText);
     }
 }
