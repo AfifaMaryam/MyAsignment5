@@ -1,5 +1,6 @@
 package ab.myassignment5;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -22,10 +23,22 @@ public class MainActivity extends AppCompatActivity {
                 btn.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+                        Intent i = new Intent(MainActivity.this,MainActivity4.class);
+                        startActivityForResult(i,2);
 
                     }
                 });
     }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 2 && resultCode == RESULT_OK && data.getData() != null) {
+            String NAME =data.getStringExtra("NAME");
+            tv.setText(NAME);
+        }
+    }
+
     public void Move(View v){
         Intent i = new Intent(MainActivity.this,MainActivity2.class);
         String name;
